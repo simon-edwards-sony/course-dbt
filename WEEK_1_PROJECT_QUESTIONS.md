@@ -1,10 +1,12 @@
 #  How many users do we have?
 **130 Users**
+        
         SELECT COUNT(DISTINCT USER_ID)
         FROM DEV_DB.DBT_SIMONEDWARDSSONYCOM.STG_USERS
 
 # On average, how many orders do we receive per hour?
 **7.52**
+
         SELECT AVG(TOTAL_ORDERS)
         FROM
         (
@@ -17,6 +19,7 @@
 
 # On average, how long does an order take from being placed to being delivered?
 **93.4 Hours / 3.89 Days**
+
         SELECT
             AVG(TIMEDIFF(minutes, CREATED_AT, DELIVERED_AT) / 60) AS HOURS_TO_DELIVER,
             AVG(TIMEDIFF(minutes, CREATED_AT, DELIVERED_AT) / 1440) AS DAYS_TO_DELIVER
@@ -27,6 +30,7 @@
 **1 Order = 25 Users**
 **2 Orders = 28 Users**
 **3+ Orders = 71 Users**
+
         SELECT AVG(NUM_SESSIONS)
         FROM
         (
