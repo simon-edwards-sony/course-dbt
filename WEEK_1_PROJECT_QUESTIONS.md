@@ -28,7 +28,9 @@
 
 # How many users have only made one purchase? Two purchases? Three+ purchases?
 **1 Order = 25 Users**
+
 **2 Orders = 28 Users**
+
 **3+ Orders = 71 Users**
 
         SELECT AVG(NUM_SESSIONS)
