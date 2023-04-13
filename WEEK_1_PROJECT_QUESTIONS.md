@@ -40,7 +40,20 @@
             FROM DEV_DB.DBT_SIMONEDWARDSSONYCOM.STG_EVENTS
             GROUP BY 1
         )
+
+# On average, how many unique sessions do we have per hour?
+**16.32**
         
+        SELECT AVG(NUM_SESSIONS)
+        FROM
+        (
+            SELECT DISTINCT
+                DATE_TRUNC(hour, CREATED_AT) AS SESSION_HOUR,
+                COUNT(DISTINCT SESSION_ID) AS NUM_SESSIONS
+            FROM DEV_DB.DBT_SIMONEDWARDSSONYCOM.STG_EVENTS
+            GROUP BY 1
+        )
+
 **Although we appear to have a session per hour, this may not always be the case. A better way to do this may be to create a list of hours from the min/max or sessions and join the counts to that in order to return 0 for any hours with no sessions**
 
         WITH RECURSIVE hours AS
