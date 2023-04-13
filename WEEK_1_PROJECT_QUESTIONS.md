@@ -41,7 +41,7 @@
             GROUP BY 1
         )
         
-**Although we appear to have a session per hour, this may not always be the case. A better way to do this may be to create a list of hours from the min/max or sessions and join the counts to that in order to return 0 for any hours with no sessions.
+**Although we appear to have a session per hour, this may not always be the case. A better way to do this may be to create a list of hours from the min/max or sessions and join the counts to that in order to return 0 for any hours with no sessions**
 
         WITH RECURSIVE hours AS
         (
