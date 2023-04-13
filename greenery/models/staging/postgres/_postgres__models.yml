@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_addresses
+    description: Address information containing data such as address, zipcode, state and country
+
+  - name: stg_events
+    description: Event information containing data such as event_id, session_id, user_id, order_id, product_id amd created_at date
+
+  - name: stg_order_items
+    description: Order Items containing data such as order_id, product_id and quantities
+
+  - name: stg_orders
+    description: Orders information containing data such as order_id, promo_id, user_id, address_id, status
+
+  - name: stg_products
+    description: Products information containing data such as product_id, name, price and inventory
+
+  - name: stg_promos
+    description: Promos information containing data such as promo_id, discount and status
+
+  - name: stg_users
+    description: Users data containing data such as user_id, name, email and a FK of address_id
