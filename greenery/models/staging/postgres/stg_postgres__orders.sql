@@ -4,6 +4,12 @@
   )
 }}
 
+WITH orders_source AS (
+  SELECT
+    *
+  FROM {{ source('postgres', 'orders') }}
+)
+
 SELECT 
     ORDER_ID,
     USER_ID,
@@ -18,4 +24,4 @@ SELECT
     ESTIMATED_DELIVERY_AT,
     DELIVERED_AT,
     STATUS
-FROM {{ source('postgres', 'orders') }}
+FROM orders_source
