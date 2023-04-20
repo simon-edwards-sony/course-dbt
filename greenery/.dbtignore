@@ -1,0 +1,7 @@
+# .dbtignore
+
+# Ignore example source/models
+models/example/
+
+# Ignore superhero tutorial source/models
+models/staging/tutorial/
