@@ -12,6 +12,6 @@ WITH promos_source AS (
 
 SELECT 
     PROMO_ID,
-    DISCOUNT,
+    ROUND(DISCOUNT, 2) AS DISCOUNT,
     STATUS
 FROM promos_source
