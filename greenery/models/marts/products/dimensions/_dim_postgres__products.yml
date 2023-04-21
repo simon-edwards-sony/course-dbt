@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: dim_postgres__products
+    description: A dimension table containing all products including their name, price and inventory

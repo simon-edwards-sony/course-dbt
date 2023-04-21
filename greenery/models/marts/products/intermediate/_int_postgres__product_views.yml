@@ -1,5 +1,5 @@
 version: 2
 
 models:
-  - name: int_product_views
+  - name: int_postgres__product_views
     description: An intermediate table showing page views as well as when these views are added to cart, checked out and shipped

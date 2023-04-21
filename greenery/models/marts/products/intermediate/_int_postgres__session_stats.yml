@@ -1,5 +1,5 @@
 version: 2
 
 models:
-  - name: int_session_stats
+  - name: int_postgres__session_stats
     description: An intermediate table showing stats for a particular session such as time viewing as well as shipping time

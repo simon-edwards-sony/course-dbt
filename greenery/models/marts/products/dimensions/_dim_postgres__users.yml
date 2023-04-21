@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: dim_postgres__users
+    description: A dimension table containing all user information including name, current address etc

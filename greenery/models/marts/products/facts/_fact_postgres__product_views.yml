@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: fact_postgres__product_views
+    description: A fact table containing the number of page views per project, as well as if they were added to cart, checked out and shipped

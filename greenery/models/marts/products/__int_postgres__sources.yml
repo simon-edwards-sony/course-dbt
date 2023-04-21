@@ -12,5 +12,5 @@ sources:
       identifier: false
 
     tables:
-      - name: int_product_views
-      - name: int_session_stats
+      - name: int_postgres__product_views
+      - name: int_postgres__session_stats

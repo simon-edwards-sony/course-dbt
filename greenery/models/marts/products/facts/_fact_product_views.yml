@@ -1,5 +1,0 @@
-version: 2
-
-models:
-  - name: fact_product_views
-    description: A fact table showing the number of page views per project, as well as if they were added to cart, checked out and shipped

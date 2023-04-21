@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: fact_postgres__orders
+    description: A fact table containing all orders and information relating to that order (status, address, user_id etc)
