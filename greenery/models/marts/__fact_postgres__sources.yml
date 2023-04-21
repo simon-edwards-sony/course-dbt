@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+
+  - name: fact_postgres
+    database: dev_db
+    schema: dbt_simonedwardssonycom
+    
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    tables:
+      - name: fact_postgres__product_views
+      - name: fact_postgres__orders
