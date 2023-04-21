@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+
+  - name: stg_postgres
+    database: dev_db
+    schema: dbt_simonedwardssonycom
+    
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    tables:
+      - name: stg_postgres__addresses
+      - name: stg_postgres__events
+      - name: stg_postgres__order_items
+      - name: stg_postgres__orders
+      - name: stg_postgres__products
+      - name: stg_postgres__promos
+      - name: stg_postgres__users

@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+
+  - name: int_postgres
+    database: dev_db
+    schema: dbt_simonedwardssonycom
+    
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    tables:
+      - name: int_product_views
+      - name: int_session_stats
