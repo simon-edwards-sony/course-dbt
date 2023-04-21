@@ -3,3 +3,10 @@ version: 2
 models:
   - name: dim_postgres__users
     description: A dimension table containing all user information including name, current address etc
+    columns:
+      - name: user_id
+        description: "The user id"
+        tests:
+          - unique
+          - not_null
+    

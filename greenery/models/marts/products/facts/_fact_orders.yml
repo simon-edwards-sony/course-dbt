@@ -3,3 +3,23 @@ version: 2
 models:
   - name: fact_postgres__orders
     description: A fact table containing all orders and information relating to that order (status, address, user_id etc)
+    columns:
+      - name: order_id
+        description: "The order id"
+        tests:
+          - unique
+          - not_null
+      - name: order_cost
+        description: "The order cost (items only)"
+        tests:
+          - not_null
+          - positive_values
+      - name: order_total
+        description: "The order total"
+        tests:
+          - not_null
+          - positive_values
+      - name: address
+        description: "The order address"
+        tests:
+          - not_null

@@ -3,3 +3,9 @@ version: 2
 models:
   - name: dim_postgres__products
     description: A dimension table containing all products including their name, price and inventory
+    columns:
+      - name: product_id
+        description: "The product id"
+        tests:
+          - unique
+          - not_null
