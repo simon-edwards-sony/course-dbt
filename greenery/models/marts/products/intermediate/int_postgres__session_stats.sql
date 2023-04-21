@@ -7,7 +7,7 @@
 WITH stg_events AS (
   SELECT
     *
-  FROM {{ source('stg_postgres', 'stg_postgres__events') }}
+  FROM {{ ref('stg_postgres__events') }}
 )
 
 SELECT

@@ -7,15 +7,15 @@
 WITH stg_orders AS (
   SELECT
     *
-  FROM {{ source('stg_postgres', 'stg_postgres__orders') }}
+  FROM {{ ref('stg_postgres__orders') }}
 ), stg_promos AS (
   SELECT
     *
-  FROM {{ source('stg_postgres', 'stg_postgres__promos') }}
+  FROM {{ ref('stg_postgres__promos') }}
 ), stg_addresses AS (
   SELECT
     *
-  FROM {{ source('stg_postgres', 'stg_postgres__addresses') }}
+  FROM {{ ref('stg_postgres__addresses') }}
 )
 
 SELECT

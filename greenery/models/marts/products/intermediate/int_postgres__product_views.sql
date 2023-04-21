@@ -7,22 +7,22 @@
 WITH stg_products AS (
   SELECT
     *
-  FROM {{ source('stg_postgres', 'stg_postgres__products') }}
+  FROM {{ ref('stg_postgres__products') }}
 ), stg_users AS
 (
   SELECT
     *
-  FROM {{ source('stg_postgres', 'stg_postgres__users') }}
+  FROM {{ ref('stg_postgres__users') }}
 ), stg_events AS
 (
   SELECT
     *
-  FROM {{ source('stg_postgres', 'stg_postgres__events') }}
+  FROM {{ ref('stg_postgres__events') }}
 ), stg_orders AS
 (
   SELECT
     *
-  FROM {{ source('stg_postgres', 'stg_postgres__orders') }}
+  FROM {{ ref('stg_postgres__orders') }}
 ), product_view_events AS
 (
   SELECT

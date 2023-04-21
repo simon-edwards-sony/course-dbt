@@ -1,7 +1,7 @@
 WITH fact_orders AS (
   SELECT
     *
-  FROM {{ source('fact_postgres', 'fact_postgres__orders') }}
+  FROM {{ ref('fact_postgres__orders') }}
 )
 
 SELECT

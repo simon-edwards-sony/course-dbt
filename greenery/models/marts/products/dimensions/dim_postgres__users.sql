@@ -7,11 +7,11 @@
 WITH stg_users AS (
   SELECT
     *
-  FROM {{ source('stg_postgres', 'stg_postgres__users') }}
+  FROM {{ ref('stg_postgres__users') }}
 ), stg_addresses AS (
   SELECT
     *
-  FROM {{ source('stg_postgres', 'stg_postgres__addresses') }}
+  FROM {{ ref('stg_postgres__addresses') }}
 )
 
 SELECT

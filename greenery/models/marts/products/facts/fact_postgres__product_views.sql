@@ -7,7 +7,7 @@
 WITH int_product_views AS (
   SELECT
     *
-  FROM {{ source('int_postgres', 'int_postgres__product_views') }}
+  FROM {{ ref('int_postgres__product_views') }}
 )
 
 SELECT

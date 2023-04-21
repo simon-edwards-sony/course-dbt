@@ -7,7 +7,7 @@
 WITH stg_products AS (
   SELECT
     *
-  FROM {{ source('stg_postgres', 'stg_postgres__products') }}
+  FROM {{ ref('stg_postgres__products') }}
 )
 
 SELECT
