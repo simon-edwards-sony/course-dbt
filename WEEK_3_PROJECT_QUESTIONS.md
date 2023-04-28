@@ -1,7 +1,9 @@
 # Part 1: Create new models to answer the first two questions (answer questions in README file)
+
 Created a new fact model named *fact_postgres__product_conversion_rate.sql* to consolidate session/product conversion rates
 
 ### What is our overall conversion rate?
+
 **62.46%**
 
 <details>
@@ -22,9 +24,9 @@ Created a new fact model named *fact_postgres__product_conversion_rate.sql* to c
 		FROM sessions
 		
 </details>
-___
 
 ### What is our conversion rate by product?
+
 **Conversion rate % per product can be found below:**
 | **product_id** | **product_name** | **conversion_rate_%** |
 | ---------- | ------------ | ----------------- |
@@ -83,25 +85,25 @@ ___
 		ORDER BY 3 DESC
 		
 </details>
-___
 
 # Part 2: We’re getting really excited about dbt macros after learning more about them and want to apply them to improve our dbt project.
+
 Added a new macro named *macro_postgres__agg_event_types.sql* and integrated this into the *int_postgres__session_stats.sql* model.
-___
 
 # Part 3: We’re starting to think about granting permissions to our dbt models in our snowflake database so that other roles can have access to them.
+
 Added and validated grants are being ran via Snowflake query history.
-___
 
 # Part 4:  After learning about dbt packages, we want to try one out and apply some macros or tests.
+
 Installed the *dbt_utils* package and utilised the *get_column_values()* function within my *macro_postgres__agg_event_types.sql* macro.
-___
 
 # Part 5: After improving our project with all the things that we have learned about dbt, we want to show off our work!
+
 The macros were used to improve the SQL code so the DAG has not changed apart from the inclusion of *fact_postgres__product_conversation_rate*
-___
 
 # Part 6. dbt Snapshots
+
 | **product_name** | **changed_from** | **changed_to** | 
 | ------------ | ------------ | ---------- |
 | Pothos | 20 | 0 |
