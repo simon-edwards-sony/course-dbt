@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: fact_postgres__product_conversion_rate
+    description: A fact table containing the number of unique page views per product, per session, for use with calculating conversion rates
+    columns:
+      - name: session_id
+        description: "The session id"
+        tests:
+          - not_null
+      - name: product_id
+        description: "The product id"
+        tests:
+          - not_null
