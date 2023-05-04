@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: fact_postgres__product_inventory_changelog
+    description: A fact table showing changes in inventory between snapshots
+    columns:
+      - name: change_date
+        description: "The change date"
+        tests:
+          - not_null
+      - name: product_id
+        description: "The product id"
+        tests: 
+          - unique
+      - name: changed_from
+        description: "The changed from inventory value"
+        tests: 
+          - not_null
+      - name: changed_to
+        description: "The changed to inventory value"
+        tests: 
+          - not_null
