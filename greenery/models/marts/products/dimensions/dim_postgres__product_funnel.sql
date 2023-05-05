@@ -28,6 +28,7 @@ SELECT
   product_views_total - checkouts_total AS checkouts_dropoff_total,
   ROUND(1 - added_to_cart_pct, 4) AS added_to_cart_dropoff_pct,
   ROUND(1 - checkouts_pct, 4) AS checkouts_dropoff_pct,
+  ROUND(DIV0(checkouts_total, added_to_cart_total), 4) AS checkouts_pct_fromcart,
   added_to_cart_total - checkouts_total AS checkouts_dropoff_total_fromcart,
-  ROUND(added_to_cart_pct - checkouts_pct, 4) AS checkouts_dropoff_pct_fromcart
+  ROUND(1 - checkouts_pct_fromcart, 4) AS checkouts_dropoff_pct_fromcart
 FROM session_agg

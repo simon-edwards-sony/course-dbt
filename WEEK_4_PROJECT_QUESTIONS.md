@@ -92,7 +92,7 @@
 + For the dropoff this would depend on if we calculate this from the level above (add_to_cart) or from total (product_views).
   - Add to cart droppoff = 111 (19.20%)
   - Checkout dropoff from total views = 217 (37.54%)
-  - Checkout dropoff from total add to carts = 106 (18.34%)
+  - Checkout dropoff from total add to carts = 106 (22.70%)
 
 <details>
 <summary>Query</summary>
@@ -112,17 +112,18 @@
 		)
 
 		SELECT
-		COUNT(*) product_views_total,
-		SUM(CASE WHEN ADDED_TO_CART > 0 THEN 1 ELSE 0 END) AS added_to_cart_total,
-		SUM(CASE WHEN CHECKOUTS > 0 THEN 1 ELSE 0 END) AS checkouts_total,
-		ROUND(DIV0(added_to_cart_total, product_views_total), 4) AS added_to_cart_pct,
-		ROUND(DIV0(checkouts_total, product_views_total), 4) AS checkouts_pct,
-		product_views_total - added_to_cart_total AS added_to_cart_dropoff_total,
-		product_views_total - checkouts_total AS checkouts_dropoff_total,
-		ROUND(1 - added_to_cart_pct, 4) AS added_to_cart_dropoff_pct,
-		ROUND(1 - checkouts_pct, 4) AS checkouts_dropoff_pct,
-		added_to_cart_total - checkouts_total AS checkouts_dropoff_total_fromcart,
-		ROUND(added_to_cart_pct - checkouts_pct, 4) AS checkouts_dropoff_pct_fromcart
+			COUNT(*) product_views_total,
+			SUM(CASE WHEN ADDED_TO_CART > 0 THEN 1 ELSE 0 END) AS added_to_cart_total,
+			SUM(CASE WHEN CHECKOUTS > 0 THEN 1 ELSE 0 END) AS checkouts_total,
+			ROUND(DIV0(added_to_cart_total, product_views_total), 4) AS added_to_cart_pct,
+			ROUND(DIV0(checkouts_total, product_views_total), 4) AS checkouts_pct,
+			product_views_total - added_to_cart_total AS added_to_cart_dropoff_total,
+			product_views_total - checkouts_total AS checkouts_dropoff_total,
+			ROUND(1 - added_to_cart_pct, 4) AS added_to_cart_dropoff_pct,
+			ROUND(1 - checkouts_pct, 4) AS checkouts_dropoff_pct,
+			ROUND(DIV0(checkouts_total, added_to_cart_total), 4) AS checkouts_pct_fromcart,
+			added_to_cart_total - checkouts_total AS checkouts_dropoff_total_fromcart,
+			ROUND(1 - checkouts_pct_fromcart, 4) AS checkouts_dropoff_pct_fromcart
 		FROM session_agg
 		*/
 		
