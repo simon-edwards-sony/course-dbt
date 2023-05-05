@@ -85,14 +85,14 @@
 **Sessions with any event of type add_to_cart**
 **Sessions with any event of type checkout**
 
-Although we already have a fact table (DEV_DB.DBT_SIMONEDWARDSSONYCOM.FACT_POSTGRES__PRODUCT_CONVERSION_RATE) to show us our conversion rates for the events to the session/product grain we would need to aggregate this to the session level rather than product grain. To make this more reproducible and remove business logic from the presentation layer we will create a new dim table named DEV_DB.DBT_SIMONEDWARDSSONYCOM.DIM_POSTGRES__PRODUCT_FUNNEL to calculate the totals and percentages of each level.
++ Although we already have a fact table (DEV_DB.DBT_SIMONEDWARDSSONYCOM.FACT_POSTGRES__PRODUCT_CONVERSION_RATE) to show us our conversion rates for the events to the session/product grain we would need to aggregate this to the session level rather than product grain. To make this more reproducible and remove business logic from the presentation layer we will create a new dim table named DEV_DB.DBT_SIMONEDWARDSSONYCOM.DIM_POSTGRES__PRODUCT_FUNNEL to calculate the totals and percentages of each level.
 
-From our session statistics we see a total of 578 sessions with a product view, 467 (80.80%) added to cart and 361 (62.46%) checkouts.
++ From our session statistics we see a total of 578 sessions with a product view, 467 (80.80%) added to cart and 361 (62.46%) checkouts.
 
-For the dropoff this would depend on if we calculate this from the level above (add_to_cart) or from total (product_views).
-Add to cart droppoff = 111 (19.20%)
-Checkout dropoff from total views = 217 (37.54%)
-Checkout dropoff from total add to carts = 106 (18.34%)
++ For the dropoff this would depend on if we calculate this from the level above (add_to_cart) or from total (product_views).
+  - Add to cart droppoff = 111 (19.20%)
+  - Checkout dropoff from total views = 217 (37.54%)
+  - Checkout dropoff from total add to carts = 106 (18.34%)
 
 <details>
 <summary>Query</summary>
@@ -130,11 +130,9 @@ Checkout dropoff from total add to carts = 106 (18.34%)
 
 # Part 3: Reflection questions -- please answer 3A or 3B, or both!
 **3A. dbt next steps for you**
-We currently use another ETL tool (Matillion) and due to the number of sources the transformations are starting to get very complex and timely. We also have a number of data quality issues that we were planning to write dashboards to alert us on, however it would make sense to wrap all of this up together. 
-
-Our next step would be to migrate a single source to dbt and compare transformations times between current vs dbt. This along with tests/documentation should be a good the best way of demonstrating the value of dbt in our organization. We already utilize staging and datamarts so we won't require any radical changes in the models themselves, just how they're built.
++ We currently use another ETL tool (Matillion) and due to the number of sources the transformations are starting to get very complex and timely. We also have a number of data quality issues that we were planning to write dashboards to alert us on, however it would make sense to wrap all of this up together. 
++ Our next step would be to migrate a single source to dbt and compare transformations times between current vs dbt. This along with tests/documentation should be a good the best way of demonstrating the value of dbt in our organization. We already utilize staging and datamarts so we won't require any radical changes in the models themselves, just how they're built.
 
 **3B. Setting up for production / scheduled dbt run of your project**
-Our current ETL tool has just recently added support out of the box for dbt so we should be able to integrate it relatively easily. We have a number of jobs that handle the ingestion and we typically run SQL scripts for each transformation as they're more flexible than the in-built transformation jobs. Scheduling dbt would just be a case of changing the data mart orchestration jobs to point to dbt instead.
-
-Going forward we were looking at implementing some ML modelling as part of our workflow (thanks to the intemediate python for data science course) so we may look to start using another tool to schedule our workloads. I particularly like the look of Dagster for this use case. Given that our goal would be to port all transformations to dbt, this should make our workflow tool agnostic and the transformation piece can just be moved over to another tool, with us just needing to handle the ingestion/orchestration of other tools (Airbyte/Fivetran etc.)
++ Our current ETL tool has just recently added support out of the box for dbt so we should be able to integrate it relatively easily. We have a number of jobs that handle the ingestion and we typically run SQL scripts for each transformation as they're more flexible than the in-built transformation jobs. Scheduling dbt would just be a case of changing the data mart orchestration jobs to point to dbt instead.
++ Going forward we were looking at implementing some ML modelling as part of our workflow (thanks to the intemediate python for data science course) so we may look to start using another tool to schedule our workloads. I particularly like the look of Dagster for this use case. Given that our goal would be to port all transformations to dbt, this should make our workflow tool agnostic and the transformation piece can just be moved over to another tool, with us just needing to handle the ingestion/orchestration of other tools (Airbyte/Fivetran etc.)
