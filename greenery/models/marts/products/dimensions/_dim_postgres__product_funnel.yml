@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: dim_postgres__product_funnel
+    description: A dim table containing total number and percentages of product views, add to cart and checkouts.
